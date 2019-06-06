@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: night-rider-deployment
+  labels:
+    app: demo
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+      - name: night-rider
+        image: sheldonwl/knight-rider-demo:1.0
+        securityContext:
+          privileged: true
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/sh","-c","python - <<END \nimport blinkt \nblinkt.clear() \nblinkt.show() \nEND"]
+      imagePullSecrets:
+      - name: regcred
