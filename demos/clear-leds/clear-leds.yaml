@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clear
+  labels:
+    app: demo
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+      - name: clear-leds
+        image: sheldonwl/pimoroni-blinkt:1.0
+        command: ["python"]
+        args: ["/home/blinkt/examples/rgb.py", "0", "0", "0"]
+        securityContext:
+          privileged: true
+      imagePullSecrets:
+      - name: regcred

@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: night-rider-deployment
+  name: night-rider
   labels:
     app: demo
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
       app: demo
@@ -17,6 +17,7 @@ spec:
       containers:
       - name: night-rider
         image: sheldonwl/knight-rider-demo:1.0
+        imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
         lifecycle:
