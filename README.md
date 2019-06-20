@@ -48,7 +48,7 @@ Now you can enable SSH, change the hostname, change the default password etc.
 ### Setup DHCP server
 I chose to make one of the Pi's a DHCP server, so I don't have to depend on an external router. My setup uses the Wi-Fi of the Pi running the DHCP server as access to the internet. You can choose to do it the same way or just use and external router to act as DHCP server. If you choose this route, you might want to assign static IP's to the Pi's, in the router’s configs.
 
-![Alt text](/docs/images/rpi-network-setup.jpg?raw=true "Raspberry Pi Network setup")  
+![Alt text](/docs/images/rpi-network.jpg?raw=true "Raspberry Pi Network setup")  
 
 #### Install and configure DHCP
 
@@ -58,7 +58,7 @@ apt-get update
 apt-get install isc-dhcp-server -y
 ~~~
 **Edit conf**
-Open /etc/dhcp/dhcp.conf with your editor. Copy and paste the rpi-cluster-k3s/master/dhcp.conf to a text editor and add the MAC addresses of your Raspberry Pi's. Replace the 'MAC' keyword with the MAC address of the Pi you want to assign a statis IP to.  
+Open /etc/dhcp/dhcp.conf with your editor. Copy and paste the rpi-cluster-k3s/master/dhcp.conf to a text editor and add the MAC addresses of your Raspberry Pi's. Replace the 'MAC' keyword with the MAC address of the Pi you want to assign a statis IP to. Also change the hostnames, if you don't name them master-x and worker-x.   
 The current DHCP config will assign the IP's *192.168.3.2* to *192.168.3.20* any device connected to the switch, but *192.168.3.2* to *192.168.3.6* will always be assigned to the Pi's with the listed MAC address. 
 
 **Add eth0 as interface value**
@@ -147,6 +147,7 @@ iface eth0 inet static
   netmask 255.255.255.0
   post-up iptables-restore < /etc/iptables.ipv4.nat
 ~~~
+You can find the complete interface file at /rpi-cluster-k3s/master/interface
 
 ### Usefull tools
 Networking tools
