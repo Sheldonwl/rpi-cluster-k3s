@@ -36,17 +36,19 @@ The following shopping list will have the bare essentials you will need to get a
 ### Download image
 Go to https://www.raspberrypi.org/downloads/ and use whatever OS image you like. I used "Raspbian Stretch with desktop". However, I recommend using the Rasbian Strech Lite image, if you can find your way around the OS just fine from the cli and if you have a smaller sized SD card. The setup was quite easy, so I will be using the Lite image in the future as well. 
 
-### Installation guide
+### Install OS
 I won't be reinventing the wheel, so just follow: https://www.raspberrypi.org/documentation/installation/installing-images/README.md to install the OS image. 
 
-### Configure 
+### Configure Pi's
 After flashing the image and placing the SD card in your Pi, connect a monitor to the HDMI port and connect the micro-USB cable to power up the Pi.  
 If you installed the desktop version you can follow: [Desktop setup](https://github.com/Sheldonwl/rpi-cluster-k3s/blob/master/docs/setup/desktop/README.md)  
 If you're doing it from the CLI you can follow: https://www.raspberrypi.org/documentation/configuration/raspi-config.md and change the user password and enable SSH. 
 
-### Setup DHCP Server and Networking
+### Setup DHCP Server and Networking on master-1
 Go to: [Setup DHCP and Networking](https://github.com/Sheldonwl/rpi-cluster-k3s/blob/master/docs/setup-dhcp.md)  
 
-### Setup K3s
-Go to: [Setup K3s](https://github.com/Sheldonwl/rpi-cluster-k3s/blob/master/docs/setup-k3s.md)  
+### Setup K3s server
+Go to: [Setup K3s server](https://github.com/Sheldonwl/rpi-cluster-k3s/blob/master/docs/setup-k3s-server.md)  
 
+### Setup K3s agent
+Go to: [Setup K3s agent](https://github.com/Sheldonwl/rpi-cluster-k3s/blob/master/docs/setup-k3s-agent.md)  
