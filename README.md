@@ -3,6 +3,8 @@
 # rpi-cluster-k3s
 This is a guide on how to build a six node Raspberry Pi cluster running K3s: Lightweight Kubernetes
 
+![Alt text](/docs/images/rpi-cluster.jpg?raw=true "Raspberry Pi cluster")
+
 ## Shopping list
 The following shopping list will have the bare essentials you will need to get a "Highly Available" cluster working, and the specific products I used for my first hardware cluster setup. However, you might choose a different case or cooling solution for example. Currently HA is not working on K3s, but it will eventually, and then we'll be ready!
 
@@ -34,16 +36,15 @@ The following shopping list will have the bare essentials you will need to get a
 
 ## Setup Pi's 
 ### Download image
-Go to https://www.raspberrypi.org/downloads/ and use whatever OS image you like. I used "Raspbian Stretch with desktop". However, I recommend using the Rasbian Strech Lite image, if you can find your way around the OS just fine from the cli and if you have a smaller sized SD card. The setup was quite easy, so will be using the Lite image in the future as well. 
+Go to https://www.raspberrypi.org/downloads/ and use whatever OS image you like. I used "Raspbian Stretch with desktop". However, I recommend using the Rasbian Strech Lite image, if you can find your way around the OS just fine from the cli and if you have a smaller sized SD card. The setup was quite easy, so I will be using the Lite image in the future as well. 
 
 ### Installation guide
-I won't be recreating the wheel, so just follow: https://www.raspberrypi.org/documentation/installation/installing-images/README.md to install the images. 
+I won't be reinventing the wheel, so just follow: https://www.raspberrypi.org/documentation/installation/installing-images/README.md to install the OS image. 
 
 ### Configure 
-After flashing the image and placing the SD card in your Pi, connect a monitor to the HDMI port and connect the micro-USB cable.  
-If you installed the desktop version, go to your start menu and open your raspberry configurations.  
-If you're doing it from the CLI you can follow: https://www.raspberrypi.org/documentation/configuration/raspi-config.md
-Now you can enable SSH, change the hostname, change the default password etc.
+After flashing the image and placing the SD card in your Pi, connect a monitor to the HDMI port and connect the micro-USB cable to power up the Pi.  
+If you installed the desktop version you can follow: [Desktop setup]()
+If you're doing it from the CLI you can follow: [CLI setup]()
 
 ### Setup DHCP server
 I chose to make one of the Pi's a DHCP server, so I don't have to depend on an external router. My setup uses the Wi-Fi of the Pi running the DHCP server as access to the internet. You can choose to do it the same way or just use and external router to act as DHCP server. If you choose this route, you might want to assign static IP's to the Pi's, in the router’s configs.
@@ -52,7 +53,7 @@ I chose to make one of the Pi's a DHCP server, so I don't have to depend on an e
 
 #### Install and configure DHCP
 
-**Install DHCP**
+**Install DHCP**  
 ~~~
 apt-get update
 apt-get install isc-dhcp-server -y
@@ -66,11 +67,11 @@ Edit */etc/default/isc-dhcp-server*
 ~~~
 Interfaces=”eth0”;
 ~~~
-**Start the dhcp server (if not already started) - not started on restart**
+**Start the dhcp server (if not already started) - not started on restart**  
 ~~~
 sudo dhcpd -cf /etc/dhcp/dhcpd.conf 
 ~~~
-**Start DHCP Server with systemd - automatically started on reboot**
+**Start DHCP Server with systemd - automatically started on reboot**  
 ~~~
 sudo systemctl start isc-dhcp-server
 ~~~
@@ -138,7 +139,7 @@ sudo iptables -A FORWARD -i eth0 -o wlan0 -j ACCEPT
 sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
 ~~~
 **Add settings**  
-Add *post-up iptables-restore < /etc/iptables.ipv4.nat* to */etc/network/interfaces*
+Add *post-up iptables-restore < /etc/iptables.ipv4.nat* to */etc/network/interfaces*  
 ~~~
 sudo vi /etc/network/interfaces
 auto eth0
