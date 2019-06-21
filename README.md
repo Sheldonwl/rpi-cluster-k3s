@@ -3,7 +3,7 @@
 # rpi-cluster-k3s
 This is a guide on how to build a six node Raspberry Pi cluster running K3s: Lightweight Kubernetes
 
-![Alt text](/images/rpi-cluster-small.jpg?raw=true "Raspberry Pi cluster")
+![Alt text](/docs/images/rpi-cluster-small.jpg?raw=true "Raspberry Pi cluster")
 
 ## Shopping list
 The following shopping list will have the bare essentials you will need to get a "Highly Available" cluster working, and the specific products I used for my first hardware cluster setup. However, you might choose a different case or cooling solution for example. Currently HA is not working on K3s, but it will eventually, and then we'll be ready!
