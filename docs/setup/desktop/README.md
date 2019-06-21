@@ -1,6 +1,6 @@
 # Setup Pi from desktop
 
-After starting up the Pi, the desktop will open and you should get a *Welcome to Raspberry Pi* screen. If you do execute the following steps, if you don't jump to step 7.  
+After starting up the Pi, the desktop will open and you should get a *Welcome to Raspberry Pi* screen. If you do, execute the following steps. If you don't jump to step 7.  
   
 1. You'll see the welcome screen. Click *Next*.  
 ![Alt text](/docs/setup/desktop/1.png?raw=true "Welcome screen")  
