@@ -59,7 +59,7 @@ apt-get update
 apt-get install isc-dhcp-server -y
 ~~~
 **Edit conf**  
-Open /etc/dhcp/dhcp.conf with your editor. Copy and paste the rpi-cluster-k3s/master/dhcp.conf to a text editor and add the MAC addresses of your Raspberry Pi's. Replace the 'MAC' keyword with the MAC address of the Pi you want to assign a statis IP to. Also change the hostnames, if you don't name them master-x and worker-x.   
+Open /etc/dhcp/dhcp.conf with your editor. Copy and paste the rpi-cluster-k3s/docs/dhcp.conf to a text editor and add the MAC addresses of your Raspberry Pi's. Replace the 'MAC' keyword with the MAC address of the Pi you want to assign a statis IP to. Also change the hostnames, if you don't name them master-x and worker-x.   
 The current DHCP config will assign the IP's *192.168.3.2* to *192.168.3.20* any device connected to the switch, but *192.168.3.2* to *192.168.3.6* will always be assigned to the Pi's with the listed MAC address. 
 
 **Add eth0 as interface value**  
@@ -148,7 +148,7 @@ iface eth0 inet static
   netmask 255.255.255.0
   post-up iptables-restore < /etc/iptables.ipv4.nat
 ~~~
-You can find the complete interface file at /rpi-cluster-k3s/master/interface
+You can find the complete interface file at /rpi-cluster-k3s/docs/interface
 
 ### Usefull tools
 Networking tools
