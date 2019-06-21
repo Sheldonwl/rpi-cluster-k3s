@@ -43,8 +43,8 @@ I won't be reinventing the wheel, so just follow: https://www.raspberrypi.org/do
 
 ### Configure 
 After flashing the image and placing the SD card in your Pi, connect a monitor to the HDMI port and connect the micro-USB cable to power up the Pi.  
-If you installed the desktop version you can follow: [Desktop setup]()
-If you're doing it from the CLI you can follow: [CLI setup]()
+If you installed the desktop version you can follow: [Desktop setup](https://github.com/Sheldonwl/rpi-cluster-k3s/blob/master/docs/setup/desktop/README.md)  
+If you're doing it from the CLI you can follow: https://www.raspberrypi.org/documentation/configuration/raspi-config.md and change the user password and enable SSH. 
 
 ### Setup DHCP server
 I chose to make one of the Pi's a DHCP server, so I don't have to depend on an external router. My setup uses the Wi-Fi of the Pi running the DHCP server as access to the internet. You can choose to do it the same way or just use and external router to act as DHCP server. If you choose this route, you might want to assign static IP's to the Pi's, in the router’s configs.
