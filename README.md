@@ -1,12 +1,10 @@
-# Under Construction
-
 # rpi-cluster-k3s
 This is a guide on how to build a six node Raspberry Pi cluster running K3s: Lightweight Kubernetes
 
 ![Alt text](/docs/images/rpi-cluster-small.jpg?raw=true "Raspberry Pi cluster")
 
 ## Shopping list
-The following shopping list will have the bare essentials you will need to get a "Highly Available" cluster working, and the specific products I used for my first hardware cluster setup. However, you might choose a different case or cooling solution for example. Currently HA is not working on K3s, but it will eventually, and then we'll be ready!
+The following shopping list will have the bare essentials you will need to get a "High Available" cluster working, and the specific products I used for my first hardware cluster setup. However, you might choose a different case or cooling solution for example. Currently HA is not working on K3s, but it will eventually, and then we'll be ready! However having a high available control plane might not be necessary. 
 
 ### Essentials:
 6x Raspberry Pi 3 model B+  
@@ -59,13 +57,13 @@ apt-get update
 apt-get install isc-dhcp-server -y
 ~~~
 **Edit conf**  
-Open /etc/dhcp/dhcp.conf with your editor. Copy and paste the rpi-cluster-k3s/docs/dhcp.conf to a text editor and add the MAC addresses of your Raspberry Pi's. Replace the 'MAC' keyword with the MAC address of the Pi you want to assign a statis IP to. Also change the hostnames, if you don't name them master-x and worker-x.   
-The current DHCP config will assign the IP's *192.168.3.2* to *192.168.3.20* any device connected to the switch, but *192.168.3.2* to *192.168.3.6* will always be assigned to the Pi's with the listed MAC address. 
+Open */etc/dhcp/dhcp.conf* with your editor. Copy and paste the *rpi-cluster-k3s/docs/dhcp.conf* to a text editor and add the MAC addresses of your Raspberry Pi's. Replace the 'MAC' keyword with the MAC address of the Pi you want to assign a static IP to. Also change the hostnames, if you don't name them master-x and worker-x.   
+The current DHCP config will assign the IP's *192.168.3.2* to *192.168.3.20* to any device connected to the switch, but *192.168.3.2* to *192.168.3.6* will always be assigned to the Pi's with the listed MAC address. 
 
 **Add eth0 as interface value**  
 Edit */etc/default/isc-dhcp-server*
 ~~~
-Interfaces=”eth0”;
+INTERFACESv4=”eth0”;
 ~~~
 **Start the dhcp server (if not already started) - not started on restart**  
 ~~~
@@ -75,7 +73,6 @@ sudo dhcpd -cf /etc/dhcp/dhcpd.conf 
 ~~~
 sudo systemctl start isc-dhcp-server
 ~~~
-
 **You can find the DHCP logs here**
 ~~~
 tail -f /var/lib/dhcp/dhcpd.leases
