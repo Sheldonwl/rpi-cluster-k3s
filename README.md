@@ -57,11 +57,11 @@ I chose to make one of the Pi's a DHCP server, so I don't have to depend on an e
 apt-get update
 apt-get install isc-dhcp-server -y
 ~~~
-**Edit conf**
+**Edit conf**  
 Open /etc/dhcp/dhcp.conf with your editor. Copy and paste the rpi-cluster-k3s/master/dhcp.conf to a text editor and add the MAC addresses of your Raspberry Pi's. Replace the 'MAC' keyword with the MAC address of the Pi you want to assign a statis IP to. Also change the hostnames, if you don't name them master-x and worker-x.   
 The current DHCP config will assign the IP's *192.168.3.2* to *192.168.3.20* any device connected to the switch, but *192.168.3.2* to *192.168.3.6* will always be assigned to the Pi's with the listed MAC address. 
 
-**Add eth0 as interface value**
+**Add eth0 as interface value**  
 Edit */etc/default/isc-dhcp-server*
 ~~~
 Interfaces=”eth0”;
@@ -98,7 +98,7 @@ sudo Systemctl enable isc-dhcp-server
 ~~~
 
 #### Setup network settings and static IP
-**Edit interface settings**
+**Edit interface settings**  
 Edit and add the following text to */etc/network/interface*. This will give the Pi with the DHCP server a static IP of *192.168.3.1*. You can change SSID and PASSWORD to your own Wi-Fi settings. 
 ~~~
 # interfaces(5) file used by ifup(8) and ifdown(8)
@@ -137,7 +137,7 @@ sudo iptables -A FORWARD -i wlan0 -o eth0 -m state --state RELATED
 sudo iptables -A FORWARD -i eth0 -o wlan0 -j ACCEPT
 sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
 ~~~
-**Add settings**
+**Add settings**  
 Add *post-up iptables-restore < /etc/iptables.ipv4.nat* to */etc/network/interfaces*
 ~~~
 sudo vi /etc/network/interfaces
