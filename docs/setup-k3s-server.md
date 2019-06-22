@@ -25,7 +25,8 @@ The following configurations will have the nodes send there status every 5 secon
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--bind-address 192.168.3.1 --kube-apiserver-arg default-not-ready-toleration-seconds=10 --kube-apiserver-arg default-unreachable-toleration-seconds=10 --kube-controller-arg node-monitor-period=10s --kube-controller-arg node-monitor-grace-period=10s --kubelet-arg node-status-update-frequency=5s" sh -
 ~~~
 
-**API Server**
+#### What are all those extra arguments?
+**API Server**  
 *--default-not-ready-toleration-seconds int     Default: 300*  
 Indicates the tolerationSeconds of the toleration for notReady:NoExecute that is added by default to every pod that does not already have such a toleration.  
 *--default-unreachable-toleration-seconds int     Default: 300*  
