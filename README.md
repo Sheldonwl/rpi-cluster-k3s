@@ -32,6 +32,9 @@ The following shopping list will have the bare essentials you will need to get a
 1x Power button: Reset button, to power on and off the Pi's  
 1x Power button: On/Off, for the cooling fans (faster than setting up the circuit to switch a transistor from one of the Pi's, but on the to-do list!)  
 
+## Setup hardware
+If you'd like to know how I created hardware go to: [Setup hardware](https://github.com/Sheldonwl/rpi-cluster-k3s/blob/master/docs/setup-hardware.md)   
+
 ## Setup Pi's 
 ### Download image
 Go to https://www.raspberrypi.org/downloads/ and use whatever OS image you like. I used "Raspbian Stretch with desktop". However, I recommend using the Rasbian Strech Lite image, if you can find your way around the OS just fine from the cli and if you have a smaller sized SD card. The setup was quite easy, so I will be using the Lite image in the future as well. 
