@@ -55,3 +55,6 @@ Go to: [Setup K3s server](https://github.com/Sheldonwl/rpi-cluster-k3s/blob/mast
 
 ### Setup K3s agent
 Go to: [Setup K3s agent](https://github.com/Sheldonwl/rpi-cluster-k3s/blob/master/docs/setup-k3s-agent.md)  
+
+### Setup Sleep/Wake-up button
+You can setup the sleep/wake-up button by running the **rpi-cluster-k3s/scripts/button.sh** script. This will create a **listen-for-shutdown.sh** script, places it in **/etc/init.d**, makes it executable and registers it to run on boot. 
