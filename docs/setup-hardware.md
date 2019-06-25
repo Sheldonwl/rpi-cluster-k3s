@@ -34,7 +34,7 @@
 **Turn the pot on the boost converter until the output voltage reads, 12V**  
 ![Alt text](/docs/images/hardware/12.jpg?raw=true "Boost converter")  
 
-**Current used buy one cooling fan**  
+**Current used by one cooling fan**  
 ![Alt text](/docs/images/hardware/13.jpg?raw=true "Fan current")  
 
 **Connect cooling fans**  
@@ -47,16 +47,17 @@
 ![Alt text](/docs/images/hardware/16.jpg?raw=true "Cooling fan switch hole")  
 
 **Insert cooling fan switch**  
+This will be used to power the cooling fans. Eventually I would like to create a circuit with a transistor, with the base connected to a GPIO port on the Pi. Based on the cpu temp, the Pi would power up the fans automatically. 
 ![Alt text](/docs/images/hardware/17.jpg?raw=true "Cooling fan switch")  
 
 ![Alt text](/docs/images/hardware/18.jpg?raw=true "Cooling fan switch")  
 
 **Boost converter power input and location**  
-I drilled a hole on the leftside of the case, where I fed the USB cable through. With a glue gun I stuck the boost converter and cable to the case.  
+I drilled a hole on the leftside of the case, where I fed the USB cable through. With a glue gun I stuck the boost converter and cable to the case. This cable is just a USB I cut in half and used the positive and negative wires to supply the 5V to the boost converter.    
 ![Alt text](/docs/images/hardware/19.jpg?raw=true "")  
 
 **Connect cooling fan power cables**   
-I drilled another hole in the top of the case, where I fed the positive and negative cables of the cooling fans through. I also glued that to the case.   
+I drilled another hole in the top of the case, where I fed the positive and negative cables of the cooling fans through. I also glued that to the case. I soldered the positive wires to the boost converter and placed a switch between the negative wires.   
 ![Alt text](/docs/images/hardware/20.jpg?raw=true "Connect cooling fans")  
 
 **Flatten screw head**  
@@ -68,6 +69,7 @@ One of the screws sits directly above the ethernet connectors, so I also had to 
 ![Alt text](/docs/images/hardware/22.jpg?raw=true "")  
 
 **Sleep/Power button cables**  
+I soldered wires to the third row of pins on the right of the blinkt led board. The pins I soldered them to on the board aren't in use by the leds and connect directly to GPIO3 and GND on the Raspberry pi. When shorted, the Pi will go to sleep or wake up. 
 Attach the sleep/power button cables to eachother and the side of the case.  
 ![Alt text](/docs/images/hardware/23.jpg?raw=true "")  
 
