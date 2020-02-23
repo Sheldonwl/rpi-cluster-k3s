@@ -1,4 +1,4 @@
-# Setup K3s server
+# Setup K3s agent
 Pay attention to the used IP addresses. If your using the same subnet and static IP's, just copy and paste. If not, change the IP's. 
 
 ## Enable container features
